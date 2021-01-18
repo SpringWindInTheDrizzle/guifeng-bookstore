@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- thymeleaf命名空间 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JingShi Bookstore. Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- 引入CSS -->
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- 做tab切换的js -->
+    <script type="text/javascript">
+        var myclick = function (v) {
+            var llis = document.getElementsByTagName("li");
+            for (var i = 0; i < llis.length; i++) {
+                var lli = llis[i];
+                if (lli == document.getElementById("tab" + v)) {
+                    lli.style.backgroundColor = "orange";
+                } else {
+                    lli.style.backgroundColor = "gray";
+                }
+            }
+
+            var divs = document.getElementsByClassName("content1");
+            for (var i = 0; i < divs.length; i++) {
+                var divv = divs[i];
+                if (divv == document.getElementById("tab" + v + "_content")) {
+                    divv.style.display = "block";
+                } else {
+                    divv.style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+            <div class="row">
+                <!-- Logo & Information Panel-->
+                <div class="col-lg-6">
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <div class="logo">
+                                <h1>JingShi</h1>
+                                <h1>Bookstore.</h1>
+                                <br>
+                                <h2>欢迎登录</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Panel    -->
+                <div class="col-lg-6 bg-white">
+                    <div class="form d-flex align-items-center">
+                        <div id="tab1_content" class="content1" style="display: block">
+                            <div id="tab_bar" class="col-auto">
+                                <button onclick="myclick(1)" class="btn btn-primary"
+                                        style="background-color: orange">
+                                    密码登录
+                                </button>
+                                <button onclick="myclick(2)" class="btn btn-primary">
+                                    验证码登录
+                                </button>
+                            </div>
+                            <br>
+                            <form method="post" action="login.html" class="form-validate" id="loginFrom">
+
+                                <div class="form-group">
+                                    <input id="login-username" type="text" name="userName" required data-msg="请输入用户名"
+                                           placeholder="用户名/手机号" value="" class="input-material">
+                                </div>
+                                <div class="form-group">
+                                    <input id="login-password" type="password" name="passWord" required data-msg="请输入密码"
+                                           placeholder="密码" class="input-material">
+                                </div>
+                                <button id="login" type="button" onclick="login1() " class="btn btn-primary">登录</button>
+                                <div style="margin-top: -40px;">
+                                </div>
+                            </form>
+                            <br/>
+                            <small>没有账号?</small><a href="register.html" class="signup">&nbsp;注册</a>
+                        </div>
+                        <div id="tab2_content" class="content1">
+                            <div class="col-auto">
+                                <button onclick="myclick(1)" class="btn btn-primary"
+                                        style="background-color: orange">
+                                    密码登录
+                                </button>
+                                <button onclick="myclick(2)" class="btn btn-primary">
+                                    验证码登录
+                                </button>
+                            </div>
+                            <br>
+                            <form method="post" action="login.html" class="form-validate" id="loginFrom2">
+                                <div class="input-group mb-3">
+                                    <input id="login-phone" name="userPhone" type="text" class="form-control rounded-0"
+                                           required data-msg="请输入手机号码"
+                                           placeholder="手机号" value="">
+                                    <span class="input-group-append">
+                                        <button id="code" onclick="getCode()" type="button" class="btn btn-info btn-flat">获取验证码</button>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <input id="login-code" type="password" name="passWord" required
+                                           data-msg="请输入验证码" placeholder="验证码" class="input-material">
+                                </div>
+                                <button id="login2" type="button" onclick="phonecode()" class="btn btn-primary">登录
+                                </button>
+                                <div style="margin-top: -40px;">
+                                </div>
+                            </form>
+                            <br/>
+                            <br/>
+                            <small>没有账号?</small><a href="register.html" class="signup">&nbsp;注册</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.min.js"></script>
+<script src="/static/jquery-validation/jquery.validate.min.js"></script><!--表单验证-->
+
+<!-- Main File-->
+<script src="/static/js/front.js"></script>
+<script src="/static/js/public.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function login1() {
+        var loginName = $("#login-username").val();
+        if (!validUserName(loginName)) {
+            swal('请输入正确的登录名', {
+                icon: "error",
+            });
+            return false;
+        }
+        var password = $("#login-password").val();
+        if (!validPassword(password)) {
+            swal('请输入正确的密码格式(6-20位字符和数字组合)', {
+                icon: "error",
+            });
+            return false;
+        }
+        //验证
+
+        var url = '/user/login/password';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: {"loginMessage": loginName, "password": password},
+            dataType: "json",
+            success: function (result) {
+                if (result.resultCode === 200) {
+                    window.location.href = '/user/index';
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+
+    function getCode() {
+        var phoneNumber = $("#login-phone").val();
+        if (!validPhoneNumber(phoneNumber)) {
+            swal('请输入正确的手机号码', {
+                icon: "error",
+            });
+            return false;
+        }
+        var url = '/user/verify';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: {"phoneNumber": phoneNumber},
+            dataType: "json",
+            success: function (result) {
+                if (result.resultCode === 200) {
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+
+    function phonecode() {
+        var phoneNumber = $("#login-phone").val();
+        if (!validPhoneNumber(phoneNumber)) {
+            swal('请输入正确的手机号码', {
+                icon: "error",
+            });
+            return false;
+        }
+        var code = $("#login-code").val();
+        var url = '/user/login/code';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: {"phoneNumber": phoneNumber, "code": code},
+            dataType: "json",
+            success: function (result) {
+                if (result.resultCode === 200) {
+                    window.location.href = '/user/index';
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
+
+

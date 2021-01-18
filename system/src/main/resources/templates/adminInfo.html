@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>System Admin.</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href='/system/index' class="brand-link">
+            <span class="brand-text font-weight-light">JingShi Bookstore. Admin</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a href="/user/admin" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                用户管理
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                图书管理
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/product/admin/manage" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>图书检索</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/product/admin/insert"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>添加图书</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                订单管理
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/order/admin/list"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>订单检索</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/order/admin/wait"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>待发货订单</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tree"></i>
+                            <p>
+                                秒杀管理
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/promotion/list"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>秒杀列表</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/promotion/finish"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>已完成秒杀列表</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/promotion/add"
+                                   class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>秒杀生成</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/system/update" class="nav-link active">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                管理员信息管理
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">管理员信息管理 <small>修改密码</small></h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form role="form" id="quickForm">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="register-passwords">新密码</label>
+                                        <input id="register-password" type="password" name="password"
+                                               class="form-control"
+                                               placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="register-passwords">重复密码</label>
+                                        <input id="register-passwords" type="password" name="password2"
+                                               class="form-control"
+                                               placeholder="Password">
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <input type="button" class="submit btn btn-primary" onclick="regis()" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong></strong>
+        <div class="float-right d-none d-sm-inline-block">
+            <b></b>
+        </div>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/static/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/static/AdminLTE-3.0.4/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="/static/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="/static/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="/static/AdminLTE-3.0.4/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="/static/AdminLTE-3.0.4/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="/static/AdminLTE-3.0.4/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/static/AdminLTE-3.0.4/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="/static/AdminLTE-3.0.4/plugins/moment/moment.min.js"></script>
+<script src="/static/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/static/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="/static/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/static/AdminLTE-3.0.4/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/static/AdminLTE-3.0.4/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/AdminLTE-3.0.4/dist/js/demo.js"></script>
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.min.js"></script>
+<script src="/static/js/front.js"></script>
+<script src="/static/js/public.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function regis() {
+        var password = $("#register-password").val();
+        var passwords = $("#register-passwords").val();
+        if (!validPassword(password)) {
+            swal('新密码：请输入正确的密码格式(6-20位字符和数字组合)', {
+                icon: "error",
+            });
+            return false;
+        }
+        if (!validPassword(passwords)) {
+            swal('重复密码：请输入正确的密码格式(6-20位字符和数字组合)', {
+                icon: "error",
+            });
+            return false;
+        }
+        //验证
+        if (password != passwords) {
+            swal('两次密码输入不同', {
+                icon: "error",
+            });
+            return false;
+        }
+        var url = '/system/profile/password';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: {"password": password},
+            dataType: "json",
+            success: function (result) {
+                if (result.resultCode === 200) {
+                    swal({
+                        title: "密码修改成功",
+                        icon: "success",
+                    }).then((flag) => {
+                        if (flag) {
+                            window.location.href = '/system/login';
+                        }
+                    });
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

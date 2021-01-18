@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>个人信息.</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sublime project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/checkout.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/checkout_responsive.css">
+    <link rel="stylesheet"
+          href="/static/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/styles/bootstrap4/bootstrap.min.css">
+    <link href="/static/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" type="text/css"
+          href="/static/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css"
+          href="/static/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css"
+          href="/static/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/responsive.css">
+</head>
+<body>
+<div class="super_container">
+
+    <!-- Header，大致相同-->
+
+    <header class="header">
+        <div class="header_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo"><a href="/user/index">JingShi Bookstore.</a>
+                            </div>
+                            <nav class="main_nav">
+                                <ul>
+                                    <li class="">
+                                        <a href="/user/index">主页</a>
+                                    </li>
+                                    <li class="hassubs">
+                                        <a href="#">图书分类</a>
+                                        <ul>
+                                            <li><a href="#">CATEGORIES.</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10004">童书</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10005">教育考试</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10006">文学小说</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10007">人文社科</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10008">科技IT</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10009">经管励志</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10010">艺术</a>
+                                            </li>
+                                            <li><a href="/product/category/get/10011">生活</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/promotion/seckill">秒杀</a></li>
+                                    <li><a href="/order/orders">订单</a></li>
+                                    <li class="active"><a href="/user/info">个人信息</a></li>
+                                </ul>
+                            </nav>
+                            <!-- 购物车 -->
+                            <div class="header_extra ml-auto">
+                                <div class="shopping_cart">
+                                    <!-- 作为链接跳转到cart.html页面 -->
+                                    <a href="/cart/all">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;"
+                                             xml:space="preserve">
+											<g>
+												<path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3
+													c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1
+													C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462
+													H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41
+													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
+											</g>
+										</svg>
+                                        <!-- 此处的0后期需要使用thymeleaf从数据库中获取购物车中购物项数量 -->
+                                        <div>购物车 <span></span></div>
+
+                                    </a>
+                                </div>
+                                <div class="search">
+                                    <div class="search_icon">
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 475.084 475.084"
+                                             style="enable-background:new 0 0 475.084 475.084;"
+                                             xml:space="preserve">
+										<g>
+											<path d="M464.524,412.846l-97.929-97.925c23.6-34.068,35.406-72.047,35.406-113.917c0-27.218-5.284-53.249-15.852-78.087
+												c-10.561-24.842-24.838-46.254-42.825-64.241c-17.987-17.987-39.396-32.264-64.233-42.826
+												C254.246,5.285,228.217,0.003,200.999,0.003c-27.216,0-53.247,5.282-78.085,15.847C98.072,26.412,76.66,40.689,58.673,58.676
+												c-17.989,17.987-32.264,39.403-42.827,64.241C5.282,147.758,0,173.786,0,201.004c0,27.216,5.282,53.238,15.846,78.083
+												c10.562,24.838,24.838,46.247,42.827,64.234c17.987,17.993,39.403,32.264,64.241,42.832c24.841,10.563,50.869,15.844,78.085,15.844
+												c41.879,0,79.852-11.807,113.922-35.405l97.929,97.641c6.852,7.231,15.406,10.849,25.693,10.849
+												c9.897,0,18.467-3.617,25.694-10.849c7.23-7.23,10.848-15.796,10.848-25.693C475.088,428.458,471.567,419.889,464.524,412.846z
+												 M291.363,291.358c-25.029,25.033-55.148,37.549-90.364,37.549c-35.21,0-65.329-12.519-90.36-37.549
+												c-25.031-25.029-37.546-55.144-37.546-90.36c0-35.21,12.518-65.334,37.546-90.36c25.026-25.032,55.15-37.546,90.36-37.546
+												c35.212,0,65.331,12.519,90.364,37.546c25.033,25.026,37.548,55.15,37.548,90.36C328.911,236.214,316.392,266.329,291.363,291.358z
+												"/>
+										</g>
+									</svg>
+                                    </div>
+                                </div>
+                                <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                            </div>
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Notifications Dropdown Menu -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        <i class="far fa-bell"></i>
+                                        <span class="badge badge-warning navbar-badge">new</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                        <span class="dropdown-item dropdown-header">最新上架图书</span>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" class="dropdown-item" id="webHref">
+                                            <i class="fas fa-envelope mr-2" id="book"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Panel -->
+        <div class="search_panel trans_300">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="search_panel_content d-flex flex-row align-items-center justify-content-end">
+                            <form action="/product/search/">
+                                <input type="text" name="keyWord" class="search_input" placeholder="Search"
+                                       required="required">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Menu -->
+
+    <div class="menu menu_mm trans_300">
+        <div class="menu_container menu_mm">
+            <div class="page_menu_content">
+
+                <div class="page_menu_search menu_mm">
+                    <form action="/product/search/">
+                        <input type="search" name="keyWord" required="required" class="page_menu_search_input menu_mm"
+                               placeholder="Search for products...">
+                    </form>
+                </div>
+                <ul class="page_menu_nav menu_mm">
+                    <li class="page_menu_item menu_mm"><a href="/user/index">主页<i
+                            class="fa fa-angle-down"></i></a></li>
+                    <li class="page_menu_item has-children menu_mm">
+                        <a href="categories.html">图书分类<i class="fa fa-angle-down"></i></a>
+                        <ul class="page_menu_selection menu_mm">
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10004">童书<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10005">教育考试<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10006">文学小说<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10007">人文社科<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10008">科技IT<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10009">经管励志<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10010">艺术<i
+                                    class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item menu_mm"><a
+                                    href="/product/category/get/10011">生活<i
+                                    class="fa fa-angle-down"></i></a></li>
+                        </ul>
+                    </li>
+                    <li class="page_menu_item menu_mm"><a href="/promotion/seckill">秒杀<i
+                            class="fa fa-angle-down"></i></a></li>
+                    <li class="page_menu_item menu_mm"><a href="/order/orders">订单<i
+                            class="fa fa-angle-down"></i></a></li>
+                    <li class="page_menu_item menu_mm"><a href="/user/info">个人信息<i
+                            class="fa fa-angle-down"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
+
+    <!-- Home -->
+
+    <!-- Checkout -->
+
+    <div class="checkout">
+        <div class="container">
+            <div class="row">
+
+                <!-- Billing Info -->
+                <div class="col-lg-6">
+                    <div class="billing checkout_section">
+                        <div class="section_title">个人信息</div>
+                        <div class="section_subtitle"></div>
+                        <div class="checkout_form_container">
+                            <div class="row">
+                                <div class="col-xl-6" th:text="'用户名：'+${user.userName}">
+                                    <!-- Name -->
+                                    用户名：Name
+                                </div>
+                                <div class="col-xl-6 last_name_col" th:text="'昵称：'+${user.nickName}">
+                                    <!-- Last Name -->
+                                    昵称：NickName
+                                </div>
+                            </div>
+                            <br>
+                            <div th:text="'手机号：'+${user.phone}">
+                                <!-- Company -->
+                                手机号：135875333131
+                            </div>
+                            <br>
+                            <div>
+                                <!-- 省份 -->
+                                <label for="checkout_province">省份*</label>
+                                <select name="checkout_province" id="checkout_province" runat="server"
+                                        onchange="selectprovince(this);" class="dropdown_item_select checkout_input"
+                                        require="required">
+                                </select>
+                            </div>
+                            <br>
+                            <div>
+                                <!-- City / Town -->
+                                <label for="checkout_city">市区/县*</label>
+                                <select name="checkout_city" id="checkout_city"
+                                        class="dropdown_item_select checkout_input" require="required">
+                                </select>
+                            </div>
+                            <br>
+                            <div>
+                                <!-- Address -->
+                                <label for="checkout_address">详细地址*</label>
+                                <input type="text" id="checkout_address" class="checkout_input" required="required"
+                                       th:value="${address.address}">
+                            </div>
+                            <br>
+                            <div>
+                                <!-- 收货人 -->
+                                <label for="checkout_name">收货人姓名*</label>
+                                <input type="text" id="checkout_name" class="checkout_input" required="required"
+                                       th:value="${address.receiverName}">
+                            </div>
+                            <br>
+                            <div>
+                                <!-- Phone no -->
+                                <label for="checkout_phone">收货人手机号码*</label>
+                                <input type="phone" id="checkout_phone" class="checkout_input" required="required"
+                                       th:value="${address.receiverPhone}">
+                            </div>
+                            <br>
+                            <button id="updateAddress" type="button" onclick="updateAddress()" class="btn btn-primary">
+                                修改地址
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Ads -->
+
+
+    <!-- Icon Boxes -->
+
+    <div class="icon_boxes">
+        <div class="container">
+            <div class="row icon_box_row">
+
+                <!-- Icon Box -->
+                <div class="col-lg-4 icon_box_col">
+                    <div class="icon_box">
+                        <div class="icon_box_image"><img src="/static/images/icon_1.svg"
+                                                         alt=""></div>
+                        <div class="icon_box_title">全国范围免费配送</div>
+                        <div class="icon_box_text">
+                            <p>支持上门自提</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon Box -->
+                <div class="col-lg-4 icon_box_col">
+                    <div class="icon_box">
+                        <div class="icon_box_image"><img src="/static/images/icon_2.svg"
+                                                         alt=""></div>
+                        <div class="icon_box_title">免费退货</div>
+                        <div class="icon_box_text">
+                            <p>7天内无条件退货。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Icon Box -->
+                <div class="col-lg-4 icon_box_col">
+                    <div class="icon_box">
+                        <div class="icon_box_image"><img src="/static/images/icon_3.svg"
+                                                         alt=""></div>
+                        <div class="icon_box_title">24小时客服在线</div>
+                        <div class="icon_box_text">
+                            <p>提供暖心服务</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+
+    <div class="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="newsletter_border"></div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="newsletter_content text-center">
+                        <div class="newsletter_title">Subscribe to our newsletter</div>
+                        <div class="newsletter_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros</p></div>
+                        <div class="newsletter_form_container">
+                            <form action="#" id="newsletter_form" class="newsletter_form">
+                                <input type="email" class="newsletter_input" required="required">
+                                <button class="newsletter_button trans_200"><span>Subscribe</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer_overlay"></div>
+    <footer class="footer">
+        <div class="footer_background"
+             style="background-image:url(/static/images/hhhh.png)"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
+                        <div class="footer_logo"><a href="#">JingShi Bookstore.</a></div>
+                        <div class="copyright ml-auto mr-auto">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            JingShi &copy;<script>document.write(new Date().getFullYear());</script>
+                            基于Dubbo的分布式线上书城
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/styles/bootstrap4/popper.js"></script>
+<script src="/static/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/static/plugins/greensock/TweenMax.min.js"></script>
+<script src="/static/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/static/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/static/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/static/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/static/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/static/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/static/plugins/easing/easing.js"></script>
+<script src="/static/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/static/js/custom.js"></script>
+<script src="/static/js/public.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    function updateAddress() {
+        var phone = $("#checkout_phone").val();
+        var name = $("#checkout_name").val();
+        var address = $("#checkout_address").val();
+        var province = $("#checkout_province").val();
+        var city = $("#checkout_city").val();
+        if (phone == null || name == null || address == null || province == null || city == null) {
+            swal('以上输入不能为空', {
+                icon: "error",
+            });
+            return;
+        }
+        if (!validPhoneNumber(phone)) {
+            swal('请输入正确的手机号码', {
+                icon: "error",
+            });
+            return;
+        }
+        var data = {
+            "address": address,
+            "receiverName": name,
+            "receiverPhone": phone,
+            "receiverProvince": province,
+            "receiverCity": city
+        }
+        var url = '/user/address/insert';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (result) {
+                if (result.resultCode === 200) {
+                    swal(result.message, {
+                        icon: "success",
+                    });
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+
+</script>
+<script type="text/javascript">
+    var list1 = new Array;
+    var list2 = new Array;
+    list1[list1.length] = "北京市";
+    list1[list1.length] = "天津市";
+    list1[list1.length] = "河北省";
+    list1[list1.length] = "山西省";
+    list1[list1.length] = "内蒙古";
+    list1[list1.length] = "辽宁省";
+    list1[list1.length] = "吉林省";
+    list1[list1.length] = "黑龙江省";
+    list1[list1.length] = "上海市";
+    list1[list1.length] = "江苏省";
+    list1[list1.length] = "浙江省";
+    list1[list1.length] = "安徽省";
+    list1[list1.length] = "福建省";
+    list1[list1.length] = "江西省";
+    list1[list1.length] = "山东省";
+    list1[list1.length] = "河南省";
+    list1[list1.length] = "湖北省";
+    list1[list1.length] = "湖南省";
+    list1[list1.length] = "广东省";
+    list1[list1.length] = "广西自治区";
+    list1[list1.length] = "海南省";
+    list1[list1.length] = "重庆市";
+    list1[list1.length] = "四川省";
+    list1[list1.length] = "贵州省";
+    list1[list1.length] = "云南省";
+    list1[list1.length] = "西藏自治区";
+    list1[list1.length] = "陕西省";
+    list1[list1.length] = "甘肃省";
+    list1[list1.length] = "青海省";
+    list1[list1.length] = "宁夏回族自治区";
+    list1[list1.length] = "新疆维吾尔自治区";
+    list1[list1.length] = "香港特别行政区";
+    list1[list1.length] = "澳门特别行政区";
+    list1[list1.length] = "台湾省";
+    list1[list1.length] = "其它";
+
+    list2[list2.length] = new Array("北京", "东城区", "西城区", "崇文区", "宣武区", "朝阳区", "丰台区", "石景山区", " 海淀区（中关村）", "门头沟区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云县", "延庆县", " 其他");
+    list2[list2.length] = new Array("和平区", "河东区", "河西区", "南开区", "红桥区", "塘沽区", "汉沽区", "大港区",
+        "西青区", "津南区", "武清区", "蓟县", "宁河县", "静海县", "其他");
+    list2[list2.length] = new Array("石家庄市", "张家口市", "承德市", "秦皇岛市", "唐山市", "廊坊市", "衡水市",
+        "沧州市", "邢台市", "邯郸市", "保定市", "其他");
+    list2[list2.length] = new Array("太原市", "朔州市", "大同市", "长治市", "晋城市", "忻州市", "晋中市", "临汾市",
+        "吕梁市", "运城市", "其他");
+    list2[list2.length] = new Array("呼和浩特市", "包头市", "赤峰市", "呼伦贝尔市", "鄂尔多斯市", "乌兰察布市",
+        "巴彦淖尔市", "兴安盟", "阿拉善盟", "锡林郭勒盟", "其他");
+    list2[list2.length] = new Array("沈阳市", "朝阳市", "阜新市", "铁岭市", "抚顺市", "丹东市", "本溪市", "辽阳市",
+        "鞍山市", "大连市", "营口市", "盘锦市", "锦州市", "葫芦岛市", "其他");
+    list2[list2.length] = new Array("长春市", "白城市", "吉林市", "四平市", "辽源市", "通化市", "白山市", "延边朝鲜族自治州", "其他");
+    list2[list2.length] = new Array("哈尔滨市", "七台河市", "黑河市", "大庆市", "齐齐哈尔市", "伊春市", "佳木斯市",
+        "双鸭山市", "鸡西市", "大兴安岭地区(加格达奇)", "牡丹江", "鹤岗市", "绥化市　", "其他");
+    list2[list2.length] = new Array("黄浦区", "卢湾区", "徐汇区", "长宁区", "静安区", "普陀区", "闸北区", "虹口区",
+        "杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "南汇区", "奉贤区", "崇明县", "其他");
+    list2[list2.length] = new Array("南京市", "徐州市", "连云港市", "宿迁市", "淮安市", "盐城市", "扬州市", "泰州市",
+        "南通市", "镇江市", "常州市", "无锡市", "苏州市", "其他");
+    list2[list2.length] = new Array("杭州市", "湖州市", "嘉兴市", "舟山市", "宁波市", "绍兴市", "衢州市", "金华市",
+        "台州市", "温州市", "丽水市", "其他");
+    list2[list2.length] = new Array("合肥市", "宿州市", "淮北市", "亳州市", "阜阳市", "蚌埠市", "淮南市", "滁州市",
+        "马鞍山市", "芜湖市", "铜陵市", "安庆市", "黄山市", "六安市", "巢湖市", "池州市", "宣城市", "其他");
+    list2[list2.length] = new Array("福州市", "南平市", "莆田市", "三明市", "泉州市", "厦门市", "漳州市", "龙岩市", "宁德市", "其他");
+    list2[list2.length] = new Array("南昌市", "九江市", "景德镇市", "鹰潭市", "新余市", "萍乡市", "赣州市", "上饶市",
+        "抚州市", "宜春市", "吉安市", "其他");
+    list2[list2.length] = new Array("济南市", "聊城市", "德州市", "东营市", "淄博市", "潍坊市", "烟台市", "威海市",
+        "青岛市", "日照市", "临沂市", "枣庄市", "济宁市", "泰安市", "莱芜市", "滨州市", "菏泽市", "其他");
+    list2[list2.length] = new Array("郑州市", "三门峡市", "洛阳市", "焦作市", "新乡市", "鹤壁市", "安阳市", "濮阳市",
+        "开封市", "商丘市", "许昌市", "漯河市", "平顶山市", "南阳市", "信阳市", "周口市", "驻马店市", "其他");
+    list2[list2.length] = new Array("武汉市", "十堰市", "襄樊市", "荆门市", "孝感市", "黄冈市", "鄂州市", "黄石市",
+        "咸宁市", "荆州市", "宜昌市", "随州市", "恩施土家族苗族自治州", "仙桃市", "天门市", "潜江市", "神农架林区", "其他");
+    list2[list2.length] = new Array("长沙市", "张家界市", "常德市", "益阳市", "岳阳市", "株洲市", "湘潭市", "衡阳市",
+        "郴州市", "永州市", "邵阳市", "怀化市", "娄底市", "湘西土家族苗族自治州", "其他");
+    list2[list2.length] = new Array("广州市", "清远市市", "韶关市", "河源市", "梅州市", "潮州市", "汕头市", "揭阳市",
+        "汕尾市", " 惠州市", "东莞市", "深圳市", "珠海市", "中山市", "江门市", "佛山市", "肇庆市", "云浮市",
+        "阳江市", "茂名市", "湛江市", " 其他");
+    list2[list2.length] = new Array("南宁市", "桂林市", "柳州市", "梧州市", "贵港市", "玉林市", "钦州市", "北海市",
+        "防城港市", "崇左市", "百色市", "河池市", "来宾市", "贺州市", "其他");
+    list2[list2.length] = new Array("海口市", "三亚市", "其他");
+    list2[list2.length] = new Array("渝中区", "大渡口区", "江北区", "沙坪坝区", "九龙坡区", "南岸区", "北碚区",
+        "万盛区", "双桥区", "渝北区", "巴南区", "万州区", "涪陵区", "黔江区", "长寿区", "合川市", "永川市",
+        "江津市", "南川市", "綦江县", "潼南县", "铜梁县", "大足县", "璧山县", "垫江县", "武隆县", "丰都县",
+        "城口县", "开县", "巫溪县", "巫山县", "奉节县", "云阳县", "忠县", "石柱土家族自治县", "彭水苗族土家族自治县",
+        "酉阳土家族苗族自治县", "秀山土家族苗族自治县", "其他");
+    list2[list2.length] = new Array("成都市", "广元市", "绵阳市", "德阳市", "南充市", "广安市", "遂宁市",
+        "内江市", "乐山市", "自贡市", "泸州市", "宜宾市", "攀枝花市", "巴中市", "资阳市", "眉山市", "雅安",
+        "阿坝藏族羌族自治州", "甘孜藏族自治州", "凉山彝族自治州县", "其他");
+    list2[list2.length] = new Array("贵阳市", "六盘水市", "遵义市", "安顺市", "毕节地区", "铜仁地区",
+        "黔东南苗族侗族自治州", "黔南布依族苗族自治州", "黔西南布依族苗族自治州", "其他");
+    list2[list2.length] = new Array("昆明市", "曲靖市", "玉溪市", "保山市", "昭通市", "丽江市", "普洱市",
+        "临沧市", "宁德市", "德宏傣族景颇族自治州", "怒江傈僳族自治州", "楚雄彝族自治州", "红河哈尼族彝族自治州",
+        "文山壮族苗族自治州", "大理白族自治州", "迪庆藏族自治州", "西双版纳傣族自治州", "其他");
+    list2[list2.length] = new Array("拉萨市", "那曲地区", "昌都地区", "林芝地区", "山南地区", "日喀则地区", "阿里地区", "其他");
+    list2[list2.length] = new Array("西安市", "延安市", "铜川市", "渭南市", "咸阳市", "宝鸡市", "汉中市", "安康市", "商洛市", "其他");
+    list2[list2.length] = new Array("兰州市 ", "嘉峪关市", "金昌市", "白银市", "天水市", "武威市", "酒泉市",
+        "张掖市", "庆阳市", "平凉市", "定西市", "陇南市", "临夏回族自治州", "甘南藏族自治州", "其他");
+    list2[list2.length] = new Array("西宁市", "海东地区", "海北藏族自治州", "黄南藏族自治州", "玉树藏族自治州",
+        "海南藏族自治州", "果洛藏族自治州", "海西蒙古族藏族自治州", "其他");
+    list2[list2.length] = new Array("银川市", "石嘴山市", "吴忠市", "固原市", "中卫市", "其他");
+    list2[list2.length] = new Array("乌鲁木齐市", "克拉玛依市", "喀什地区", "阿克苏地区", "和田地区", "吐鲁番地区",
+        "哈密地区", "塔城地区", "阿勒泰地区", "克孜勒苏柯尔克孜自治州", "博尔塔拉蒙古自治州",
+        "昌吉回族自治州伊犁哈萨克自治州", "巴音郭楞蒙古自治州", "河子市", "阿拉尔市", "五家渠市", "图木舒克市", "其他");
+    list2[list2.length] = new Array("香港", "其他");
+    list2[list2.length] = new Array("澳门", "其他");
+    list2[list2.length] = new Array("台湾", "其他");
+
+    var ddlProvince = document.getElementById("checkout_province");
+    var ddlCity = document.getElementById("checkout_city");
+    for (var i = 0; i < list1.length; i++) {
+        var option = document.createElement("option");
+        option.appendChild(document.createTextNode(list1[i]));
+        option.value = list1[i];
+        ddlProvince.appendChild(option);
+        //city initialize
+        var firstprovince = list2[0];
+        for (var j = 0; j < firstprovince.length; j++) {
+            var optioncity = document.createElement("option");
+            optioncity.appendChild(document.createTextNode(firstprovince[j]));
+            optioncity.value = firstprovince[j];
+            ddlCity.appendChild(optioncity);
+        }
+    }
+
+    function indexof(obj, value) {
+        var k = 0;
+        for (; k < obj.length; k++) {
+            if (obj[k] == value)
+                return k;
+        }
+        return k;
+    }
+
+    function selectprovince(obj) {
+        ddlCity.options.length = 0;//clear
+        var index = indexof(list1, obj.value);
+        var list2element = list2[index];
+        for (var i = 0; i < list2element.length; i++) {
+            var option = document.createElement("option");
+            option.appendChild(document.createTextNode(list2element[i]));
+            option.value = list2element[i];
+            ddlCity.appendChild(option);
+        }
+    }
+</script>
+<script type="text/javascript">
+    //serverUrl
+    let socketUrl = 'ws://101.200.176.41:7000/wss/websocket';
+    //保存websocket对象
+    let socket;
+    // reConnect函数节流标识符
+    let flag = true;
+    //心跳机制
+    let heart = {
+        timeOut:30000,
+        timeObj: null,
+        serverTimeObj: null,
+        start:function(){
+            let self = this;
+            //清除延时器
+            this.timeObj && clearTimeout(this.timeObj);
+            this.serverTimeObj && clearTimeout(this.serverTimeObj);
+            this.timeObj = setTimeout(function(){
+                socket.send('心跳');//发送消息，服务端返回信息，即表示连接良好，可以在socket的onmessage事件重置心跳机制函数
+                //定义一个延时器等待服务器响应，若超时，则关闭连接，重新请求server建立socket连接
+                self.serverTimeObj=setTimeout(function(){
+                    socket.close();
+                    reConnect(socketUrl);
+                },self.timeOut)
+            },this.timeOut)
+        }
+    }
+
+    createWebsocket(socketUrl)
+    //建立websocket连接函数
+    function createWebsocket(url) {
+        try {
+            socket = new WebSocket(url);
+            init();
+        } catch (e) {
+            //进行重连;
+            console.log('websocket连接错误');
+            reConnect(socketUrl);
+        }
+    }
+    //对WebSocket各种事件进行监听
+    function init() {
+        socket.onopen = function () {
+            //连接已经打开
+            //重置心跳机制
+            console.log("Socket 已打开");
+            // socket.send("消息发送测试(From Client)");
+            heart.start();
+        };
+        socket.onmessage = function (msg) {
+            //通过event.data获取server发送的信息
+            //对数据进行操作
+            console.log(msg.data);
+            //收到消息表示连接正常，所以重置心跳机制
+            heart.start();
+            var h = msg.data;
+            $.ajax({
+                type: 'POST',
+                url: '/product/name',
+                data: {"id": msg.data},
+                dataType: "json",
+                success: function (result) {
+                    if (result.resultCode === 200) {
+                        var x = document.getElementById("book")
+                        x.innerHTML = result.data;
+                        var aObj = document.getElementById("webHref");
+                        aObj.href = "/product/goods/info/" + h;
+                    }
+                }
+            });
+        };
+        socket.onerror = function () {
+            //报错+重连
+            console.log('socket连接出错');
+            reConnect(socketUrl);
+        };
+        socket.onclose = function () {
+            console.log('socket连接关闭');
+        };
+    }
+
+    //重连函数
+    //因为重连函数会被socket事件频繁触发，所以通过函数节流限制重连请求发送
+    function reConnect(url) {
+        if (!flag) {
+            return;
+        }
+        flag = false;
+        setTimeout(function () {
+            createWebsocket(url);
+            flag = true;
+        }, 30000)
+    }
+</script>
+</body>
+</html>

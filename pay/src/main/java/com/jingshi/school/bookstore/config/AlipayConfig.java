@@ -1,0 +1,20 @@
+package com.jingshi.school.bookstore.config;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AlipayConfig {
+    // 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
+    public static String app_id = "2016102300747732";
+    // 商户私钥，您的PKCS8格式RSA2私钥
+    public static String merchant_private_key = "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCfV1FzxwAqT2zmxhbKLlkaTAkQt0jfI3jqBOBakuFWk/a6ZByWKzDVEeY8oM6cPUDSAvmCDxhWXsAlb6uNDPABEBswqTdvDebuaJK/VKp2yhboGwNtcSiRdJLFDnP0GuKOP85Uc3h0VcOwce3vGRIJ/YkrlJYPbzKCDtyggdulzZqhhE/MLfu/aF5AjnXKL5l4c9nH8sN/gjN5UbpHDyTJBy0XBJHhYOyekyhQrSOhKhwR1rpvh+0tIsTK4IRCNnKB6mSaOjzxECAYUjumy5aSU6ZlrwD+aYGELq3zr300uAOX2ep8Gfv2DkyI4aMJbsgOgFaeAaY/Q4PtQBXW/EQhAgMBAAECggEAfTXVaMBIzfap4dJpWCkBlZuISB1u4wFx45s/XY0sC6er6x3+JLb94YD2RlAq6zVq+VyjCmOoQT6liQVubiFre7pXU261g8wN2uxL3JPAfCYjx/JqSBbyxRIwvy6zSW/S9esHzO8MCYbXhpCQYyF1Pmp/3sIdBTXhH7hkALDqlCd1u/Mz6DjljZmNRHKAvcKLAM6WHutT0eX0NVHQANHPaJlMcs5MQcU6zh3DpY2V/LvjoUzlq8dJpXd89Otpi2+K2/ZT8eh1M5PsWw2olXBQXVE07J101Tk0gujL15bdDwwaPbTl9SRBbjZZS/n8GYHTo3607KA8DVoxufs2r3JeQQKBgQDXLdCepZY59X7pFq7VQA0q2GSl8dGJ/TfL0+yNxiRZ6Nhp4/8Q/OtSJ+cfL0ZTRGFyu+nWNskiHCBFbvfegugbWkjzAf1TwWCE83zHnVs3UU4a7kRtZlrJINiVK2LVhg16hvKCckVEq0Tlg/liCLnECm14hYzXeiu+HScIjWbHCQKBgQC9kbtbog7JuZJkTAzTw54NKF2M4QEIsBv0oaHQJ5wQ62xpiEy8t7uvrEf2FcnMVFLoRawxx8UvDH2Py8YOoCXFWUjkLeluzkd4MW9lZZnroYzS1ehYRuf+JSSaIpVqtrpvpTtlyAi6uEN1BAu9xYxF3Br6ZMPNkGJqmYRTvNsCWQKBgBVJ/x3zHA3X8Bp3mAyZLbRTfIG+jxCr8N1Ftl3AgNA0bVTsrcusekvCjudS8g5C8bE8TkJXYUbyqW61L+jf4r7yC82fIMUsmLQOswW81819SdD4SeTY/5pumX8Ir9qYTLUWrN+jFp9YopRinkXIvzhaH8KQ1AJtn+5LTBVYiBahAoGAP1Ubuh5nQF++F8IMmwcEm7K7pmBZnxRvEoiZbdh93G06t/swX/AmRSeSlxVqaNhXJoB4ad0q9HAA1vSmQ6afV9JfdtQb48gIupARfle2V7GOQbXzPOLbiN3R36jkMFXB7aDPOk7dE7yR1Ns4LPt9xK0nWjYl8FxndOO7ANrcdGkCgYBUBwQaP0vEQa7JLQO9y5WnSj9z9lZ0rk/KaXpjVijIdy2iT99dWIWDfyDVlcx5FZH5XEmT4KPA8Gr9uF2w3q64qif5TZPDp5KkVMOQTtIZ5FzyISurVJOr3b4RKNTGmJRdTiEM9pO+S39ardnqDcecU7Q92HL61TH7RAa3rLN84w==";
+    // 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
+    public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg3YWz/0LBrLYcc1tbBO/N3bC66KNfAAyKb6+aGGleGe7dqCOOp1A+q7Lf2TxBqP88ABK4bxyrPxR8XPlw2OZZ3uhfhkdpaRF5sq1ygobIBuwZ50GFFazczSu4g6QpBrakJ1EZa1JMgVwhHVjpTGjtK+fdlnoDgvtuuLBfB98PS9SEprArexuYmptjIwPbR/NxAfuN4bFhefV0Od9rNufpmZQccp+3doSay7KztsBLWqIW+4St6bhnjGBCBEsuVzOmMsfqCHyGD2RRiBH08m0nI4ypxfKRcV9klPBd/wPT4y0SNyX0HLBY3lQgX3opqwUJZ17NXIMkqItdIqEqD7eNwIDAQAB";
+    // 异步通知到以POST请求发送
+    public static String notify_url = "http://123.56.228.188:8090/pay/alipay/alipayNotifyNotice";
+    public static String return_url = "http://123.56.228.188:8090/pay/alipay/alipayReturnNotice";
+    public static String sign_type = "RSA2";
+    public static String charset = "utf-8";
+    public static String gatewayUrl = "https://openapi.alipaydev.com/gateway.do";//注意：沙箱测试环境，正式环境为：https://openapi.alipay.com/gateway.do
+
+}

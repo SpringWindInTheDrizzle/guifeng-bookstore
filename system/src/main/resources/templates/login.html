@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JingShi Bookstore Admin Login.</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.default.css" id="theme-stylesheet">
+</head>
+<body>
+<div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+            <div class="row">
+                <!-- Logo & Information Panel-->
+                <div class="col-lg-6">
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <div class="logo">
+                                <h1>JingShi Bookstore.</h1>
+                            </div>
+                            <p>管理员登录.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Panel    -->
+                <div class="col-lg-6 bg-white">
+                    <div class="form d-flex align-items-center">
+                        <div class="content">
+                            <form method="post" action="login.html" class="form-validate" id="loginFrom">
+                                <div class="form-group">
+                                    <input id="login-username" type="text" name="userName" required data-msg="请输入用户名"
+                                           placeholder="admin"  class="input-material">
+                                </div>
+                                <div class="form-group">
+                                    <input id="login-password" type="password" name="passWord" required data-msg="请输入密码"
+                                           placeholder="密码" class="input-material">
+                                </div>
+                                <button id="login" type="button" class="btn btn-primary" onclick="adminLogin()">登录</button>
+                            </form>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.2.1/bootstrap.min.js"></script>
+<script src="/static/AdminLTE-3.0.4/plugins/jquery-validation/jquery.validate.min.js"></script><!--表单验证-->
+<!-- Main File-->
+<script src="/static/js/public.js"></script>
+<script src="/static/js/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+    function adminLogin() {
+        var username = $("#login-username").val();
+        var password = $("#login-password").val();
+        var url = '/system/login/password';
+        $.ajax({
+            type: 'POST',//方法类型
+            url: url,
+            data: {"userName": username, "password": password},
+            dataType: "json",
+            success: function (result) {
+                if (result.resultCode === 200) {
+                    window.location.href = '/system/index';
+                } else {
+                    swal(result.message, {
+                        icon: "error",
+                    });
+                }
+                ;
+            },
+            error: function () {
+                swal("操作失败", {
+                    icon: "error",
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
